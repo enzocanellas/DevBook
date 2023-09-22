@@ -16,7 +16,7 @@ type Usuario struct {
 	CriadoEm time.Time `json:"criadoEm, omitempty"`
 } 
 
-func (usuario *Usuario) validar() error { // valida a condição para o usuario ser cadastrado no banco de dados
+func (usuario *Usuario) validar(etapa string) error { // valida a condição para o usuario ser cadastrado no banco de dados
 	if usuario.Nome == "" {
 		return errors.New("O nome é obrigatório e não pode estar em branco")
 	}
@@ -26,14 +26,14 @@ func (usuario *Usuario) validar() error { // valida a condição para o usuario 
 	if usuario.Email == "" {
 		return errors.New("O e-mail é obrigatório e não pode estar em branco")
 	}
-	if usuario.Senha == "" {
+	if etapa == "cadastro" && usuario.Senha == "" {
 		return errors.New("A senha é obrigatório e não pode estar em branco")
 	}
 	return nil
 }
 
-func (usuario *Usuario) Preparar() error { // vai chamar os metodos para validar e formatar o usuario recebidp
-	if erro := usuario.validar(); erro != nil {
+func (usuario *Usuario) Preparar(etapa string) error { // vai chamar os metodos para validar e formatar o usuario recebidp
+	if erro := usuario.validar(etapa); erro != nil {
 		return erro
 	}
 
@@ -46,3 +46,4 @@ func (usuario *Usuario) Formatar() {
 	usuario.Nick = strings.TrimSpace(usuario.Nick)
 	usuario.Email = strings.TrimSpace(usuario.Email)
 }
+ 
