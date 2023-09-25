@@ -16,7 +16,7 @@ var rotasUsuarios = []Rota{ //Onde se encontram as rotas do programa
 		URI: "/usuarios",
 		Metodo: http.MethodGet,
 		Funcao: controllers.BuscarUsuarios,
-		RequerAutenticacao: false,
+		RequerAutenticacao: true,
 	},
 	{
 		URI: "/usuarios/{usuarioId}",
