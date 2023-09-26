@@ -24,7 +24,7 @@ func Configurar(r *mux.Router) *mux.Router {
 			r.HandleFunc(rota.URI, middlewares.Logger(middlewares.Autenticar(rota.Funcao)),
 			).Methods(rota.Metodo)
 		} else {
-			r.HandleFunc(rota.URI, middlewares.Logger(middlewares.Autenticar(rota.Funcao))).Methods(rota.Metodo)
+			r.HandleFunc(rota.URI, middlewares.Logger(rota.Funcao)).Methods(rota.Metodo)
 		}
 	}
 	return r

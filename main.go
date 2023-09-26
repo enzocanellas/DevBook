@@ -19,10 +19,9 @@ import (
 // 	fmt.Println(stringBase64)
 
 // }
-
 func main() {
 	config.Carregar()
 	r := router.Gerar()
-	fmt.Println("Rodando a API")
+	fmt.Printf("Escutando na porta %d", config.Porta)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
 }
