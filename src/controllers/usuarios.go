@@ -13,6 +13,7 @@ import (
 	"io"
 	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/gorilla/mux"
 )
@@ -347,7 +348,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {// essa função pe
 		return
 	}
 
-	
+	respostas.JSON(w, http.StatusNoContent, nil)
 }
 
 
